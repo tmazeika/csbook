@@ -1,0 +1,79 @@
+---
+---
+
+// noinspection CssUnknownTarget
+@import 'code';
+
+:root {
+  --color-dark: #222;
+  --color-mute: #999;
+  --color-light: #f4f4f4;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--color-dark);
+  font: 400 1em/1.5 'Source Serif Pro', serif;
+
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font: 200 1em/1 'Source Sans Pro', sans-serif;
+
+  margin: 1rem 0;
+}
+
+h1 {
+  border-bottom: 1px solid var(--color-mute);
+  font-size: 2.5em;
+
+  padding-bottom: 1rem;
+}
+
+h2 {
+  font-size: 2.5em;
+
+  margin-top: 2rem;
+}
+
+p {
+  hyphens: auto;
+  text-align: justify;
+
+  margin: 1em 0;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: var(--color-mute);
+
+  transition: text-decoration-color 200ms;
+}
+
+a:hover {
+  text-decoration-color: var(--color-dark);
+}
+
+div.highlight {
+  border-radius: 5px;
+
+  overflow-x: auto;
+}
+
+pre.highlight {
+  margin: 1em;
+}
+
+code {
+  font-family: 'Source Code Pro', monospace;
+}
+
+.content {
+  max-width: 40em;
+  margin: auto;
+  padding: 1em;
+}
