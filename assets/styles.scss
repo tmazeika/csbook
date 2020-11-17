@@ -61,10 +61,14 @@ a:hover {
   color: var(--color-blue-hi);
 }
 
+ol, ul {
+  margin: 1em 0;
+}
+
 pre.highlight {
   margin: 1em 0;
   white-space: pre-wrap;
-  word-break: break-all;
+  word-break: break-word;
 }
 
 code {

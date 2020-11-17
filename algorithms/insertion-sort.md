@@ -3,67 +3,43 @@ layout: default
 title: Insertion Sort
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras accumsan, massa eget rutrum porta, odio metus tempus lacus, sed gravida justo sapien sit amet sem. Nulla ornare enim non diam efficitur porta. Vestibulum eu dolor libero. Nunc vitae eros augue. Donec et condimentum nunc. In in nisi tincidunt, egestas libero vitae, suscipit ipsum. Praesent elementum orci a massa euismod, et egestas leo fermentum. Duis volutpat turpis et nisi finibus, sed malesuada dolor luctus. Vestibulum placerat aliquet nisl sollicitudin posuere. Vivamus in scelerisque mi. Nunc non erat urna. Aliquam tincidunt nisi libero. Maecenas vel maximus diam. Sed hendrerit efficitur ex. Integer non mi est. 
+{% include complexity.html %}
 
-## Bubble Sort
+## Summary
 
- Sed at [scelerisque](https://csbook.mazeika.me) justo. Vestibulum faucibus odio nec luctus egestas. Nulla sed orci non diam tempus dapibus. Cras at suscipit massa. Morbi nec dui neque. Nunc nec nisl sit amet diam gravida fermentum et sit amet orci. In `System.out.println()` cursus tristique nulla nec cursus. Vivamus $$\Delta x = \frac{9}{5}$$ nisl nunc, aliquet et sapien eu, faucibus euismod dolor. Praesent non purus faucibus, tempor diam in, accumsan neque. Morbi facilisis pharetra justo vel euismod. Nam suscipit et risus eu semper. Fusce rutrum porttitor viverra.
+Insertion Sort works by *inserting* each element of an unsorted input array into a sorted output array.
 
-```javascript
-/**
- * Does a thing
- */
-function helloWorld(param1, param2) {
-  var something = 0;
+## Implementation
 
-  // Do something
-  if (2.0 % 2 == something) {
-    console.log('Hello, world!');
-  } else {
-    return null;
-  }
+We'll start by inserting an element into an already sorted array. This is implemented recursively and returns a new array, rather than modifying the given array.
 
-  // @TODO comment
-}
+```python
+def insert(x, arr):
+# Inserting x into an empty array results in an array with x by itself.
+    if len(arr) == 0: return [x]
+# When x is less than or equal to the head of the array (i.e. the smallest element), the result is x followed by the array.
+    elif x <= arr[0]: return [x] + arr
+# Otherwise, the result is the head of the array followed by the result of inserting x somewhere into the tail of the array.
+    else: return [arr[0]] + insert(x, arr[1:])
+
+print(insert(1, []))        # [1]
+print(insert(1, [-1]))      # [-1, 1]
+print(insert(1, [2, 2, 3])) # [1, 2, 2, 3]
+print(insert(5, [1, 2, 9])) # [1, 2, 5, 9]
 ```
 
-When \\(a \ne 0\\), there are two solutions to \\(ax^2 + bx + c = 0\\) and they are
-$$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+As implied by the summary, we'll need to iterate over the input array and insert each element into some sorted array. Again, this will be recursive.
 
-<p>
-\begin{align}
-a_{11}& =b_{11}& a_{12}& =b_{12}\notag\\
-a_{21}& =b_{21}& a_{22}& =b_{22}+c_{22} \tag{y}
-\end{align}
-</p>
+```python
+def sort(arr):
+# An empty array is already sorted.
+    if len(arr) == 0: return []
+# Otherwise, insert the head of the array into the sorted tail.
+    else: return insert(arr[0], sort(arr[1:]))
 
-Aenean ultricies ultricies lectus vitae feugiat. Suspendisse potenti.
-
-```java
-import java.util.*;
- 
-class Palindrome
-{
-   public static void main(String args[])
-   {
-      String original, reverse = "";
-      Scanner in = new Scanner(System.in);
- 
-      System.out.println("Enter a string to check if it is a palindrome");
-      original = in.nextLine();
- 
-      int length = original.length();
- 
-      for ( int i = length - 1; i >= 0; i-- )
-         reverse = reverse + original.charAt(i);
- 
-      if (original.equals(reverse))
-         System.out.println("Entered string is a palindrome.");
-      else
-         System.out.println("Entered string is not a palindrome.");
- 
-   }
-}
+print(sort([]))              # []
+print(sort([1]))             # [1]
+print(sort([1, 5, 2, 2, 3])) # [1, 2, 2, 3, 5]
 ```
 
-Proin quis quam at `est lobortis tempus scelerisque` et dui. Aenean eu purus molestie, facilisis arcu vel, pretium mi. In dictum nulla ut nulla commodo, sed vulputate libero semper. Phasellus nunc ante, mollis eu placerat at, dapibus vel sapien. Nulla tincidunt mi erat, in volutpat arcu lacinia fringilla. Pellentesque a erat `non dui rutrum lobortis`. Etiam id ante nisi. Nam vitae placerat magna, vitae placerat risus. Sed vitae $$\Delta x = f(y)$$ libero ac turpis facilisis malesuada ultrices vel massa. Aenean ultricies ultricies lectus vitae feugiat. Suspendisse potenti.
+The recursive case may be a bit confusing, so let's dig in some more. First, notice that calling `insert` with the head of an array and its own tail results in a new array with all the same elements as the original, albeit in a different order. Fortunately, `insert` also guarantees that if we give it a sorted array in which to insert an element, we'll get *back* a sorted array. We use that property to our advantage: just return the result of inserting the head into the *sorted* tail. The tail isn't necessarily sorted, but recall that we have a function that sorts arrays: `sort`!
