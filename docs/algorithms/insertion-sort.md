@@ -5,7 +5,7 @@ title: Insertion Sort
 
 Insertion Sort works by *inserting* each element of an unsorted input array into a sorted output array.
 
-<video width="100%" autoplay loop>
+<video playsinline autoplay loop muted width="100%">
     <source src="/assets/insertion-sort.mp4" type="video/mp4">
 </video>
 
