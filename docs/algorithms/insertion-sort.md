@@ -3,15 +3,13 @@ layout: default
 title: Insertion Sort
 ---
 
-Insertion Sort works by *inserting* each element of an unsorted input array into a sorted output array.
+Insertion Sort works by *inserting* each element of an unsorted input array into a sorted output array. This is an in-place algorithm because it doesn't create a *new* output array, but rather maintains a sorted and unsorted region in the input array.
 
-<video playsinline autoplay loop muted width="100%">
-    <source src="/assets/insertion-sort.mp4" type="video/mp4">
-</video>
+{% include video.html src="insertion-sort" %}
 
 ## Implementation
 
-Working bottom-up, we'll start by inserting an element into an already sorted array. This is implemented recursively and returns a new array, rather than modifying the given array.
+Working bottom-up, we'll start by inserting an element into an already sorted array.
 
 ```python
 def insert(x, arr):
@@ -28,7 +26,7 @@ print(insert(1, [2, 2, 3])) # [1, 2, 2, 3]
 print(insert(5, [1, 2, 9])) # [1, 2, 5, 9]
 ```
 
-As implied by the summary, we'll need to iterate over the input array and insert each element into some sorted array. Again, this will be recursive.
+Now we'll need to iterate over the input array and insert each element into some sorted array.
 
 ```python
 def sort(arr):
