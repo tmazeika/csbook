@@ -65,8 +65,16 @@ ol, ul {
   margin: 1em 0;
 }
 
+img {
+  width: 100%;
+}
+
 pre.highlight {
+  border-top: 1px solid var(--color-light);
+  border-bottom: 1px solid var(--color-light);
+
   margin: 1em 0;
+  padding: 1em 0;
   white-space: pre-wrap;
   word-break: break-word;
 }
