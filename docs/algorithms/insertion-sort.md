@@ -5,7 +5,7 @@ title: Insertion Sort
 
 |           | Best Case     | Average Case | Worst Case      |
 | --------- | :-----------: | :----------: | :-------------: |
-| **When**  | Sorted        | Random       | Reversed        |
+| **Input** | Sorted        | Random       | Reversed        |
 | **Time**  | $$\Theta(n)$$ | $$O(n^2)$$   | $$\Theta(n^2)$$ |
 | **Space** | $$O(1)$$      | $$O(1)$$     | $$O(1)$$        |
 
