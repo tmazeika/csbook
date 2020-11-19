@@ -83,11 +83,14 @@ code {
   font: 400 0.9em/1.5 'Source Code Pro', monospace;
 }
 
-p code {
-  background-color: var(--color-light);
-  border-radius: 3px;
+p, li {
+  code {
+    background-color: var(--color-light);
+    border-radius: 3px;
 
-  padding: 0 0.2em;
+    margin: 0 1px;
+    padding: 0 0.2em;
+  }
 }
 
 .content {
