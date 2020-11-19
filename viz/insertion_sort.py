@@ -14,7 +14,7 @@ class InsertionSort(Scene):
                    for _ in range(ARR_LEN)]
 
         nums = [Integer(n).set_fill(BLACK, opacity=1).set_width(0.6)
-                for n in [2, 7, 6, 9, 1, 0, 3]]
+                for n in [2, 7, 6, 2, 1, 9, 3]]
         for i, n in enumerate(nums):
             squares[i].add(n)
 

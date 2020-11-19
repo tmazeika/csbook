@@ -3,9 +3,17 @@ layout: default
 title: Insertion Sort
 ---
 
-Insertion Sort works by *inserting* each element of an unsorted input array into a sorted output array. This is an in-place algorithm because it doesn't create a *new* output array, but rather maintains a sorted and unsorted region of the input array.
+|           | Best Case     | Average Case | Worst Case      |
+| --------- | :-----------: | :----------: | :-------------: |
+| **When**  | Sorted        | Random       | Reversed        |
+| **Time**  | $$\Theta(n)$$ | $$O(n^2)$$   | $$\Theta(n^2)$$ |
+| **Space** | $$O(1)$$      | $$O(1)$$     | $$O(1)$$        |
+
+Insertion Sort works by *inserting* each element of an unsorted input array into a sorted output array. This is an in-place algorithm because it doesn't create a *new* output array, but rather maintains a sorted and unsorted region of the input array, mutating the array directly.
 
 {% include video.html src="insertion-sort" %}
+
+Additionally, the sort is stable because each element from left to right of the unsorted region gets inserted as far right into the sorted region as possible.
 
 ## Implementation
 
@@ -53,7 +61,7 @@ Comment 1 says that the outer for loop runs $$n - 1$$ times. Comment 2 says that
 
     <p>
     \begin{equation}
-       (n - 1) \times 1 \in O(n)
+       (n - 1) \times 1 \in \Theta(n)
     \end{equation}
     </p>
 
@@ -69,9 +77,11 @@ Comment 1 says that the outer for loop runs $$n - 1$$ times. Comment 2 says that
 
     <p>
     \begin{equation}
-        \sum_{i = 1}^{n - 1}i = \frac{n (n - 1)}{2} \in O(n^2)
+        \sum_{i = 1}^{n - 1}i = \frac{n (n - 1)}{2} \in \Theta(n^2)
     \end{equation}
     </p>
+
+Generally, Insertion Sort is best for small or nearly-sorted arrays.
 
 ## Trivia
 
